@@ -10,22 +10,50 @@ import {TooltipModule} from "primeng/tooltip";
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
+import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
+import {InputTextareaModule} from "primeng/inputtextarea";
+import {CalendarModule} from "primeng/calendar";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {SelectButtonModule} from "primeng/selectbutton";
+import {DropdownModule} from "primeng/dropdown";
+import {InputNumberModule} from "primeng/inputnumber";
+import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
+import {InputMaskModule} from "primeng/inputmask";
+import {FormsModule} from "@angular/forms";
+import {MessageModule} from "primeng/message";
+import { MessagesComponent } from './messages/messages.component';
+import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
+import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LancamentosPesquisaComponent,
     NavbarComponent,
-    PessoasPesquisaComponent
+    PessoasPesquisaComponent,
+    LancamentoCadastroComponent,
+    PessoaCadastroComponent,
+    MessagesComponent,
+    LancamentosGridComponent,
+    PessoasGridComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    InputTextModule,
-    ButtonModule,
-    TableModule,
-    TooltipModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        InputTextModule,
+        ButtonModule,
+        TableModule,
+        TooltipModule,
+        InputTextareaModule,
+        CalendarModule,
+        BrowserAnimationsModule,
+        SelectButtonModule,
+        DropdownModule,
+        InputNumberModule,
+        InputMaskModule,
+        FormsModule,
+        MessageModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
