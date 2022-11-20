@@ -28,3 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ------------------------------------------------
 01-PRIMEIRO COMMIT - AULA 10 - ESTE COMMIT NÃO CONTÉM O DESAFIO
+02-Capitulo 13 Completo
