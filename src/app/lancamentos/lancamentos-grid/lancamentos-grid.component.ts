@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {Lancamento} from "../lancamento";
 
 @Component({
   selector: 'app-lancamentos-grid',
@@ -6,5 +7,5 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./lancamentos-grid.component.css']
 })
 export class LancamentosGridComponent {
-  @Input() lancamentos:any[] = [];
+  @Input() lancamentos:Lancamento[] = [];
 }

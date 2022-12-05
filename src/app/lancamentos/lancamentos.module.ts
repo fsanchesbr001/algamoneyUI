@@ -17,6 +17,7 @@ import {SelectButtonModule} from "primeng/selectbutton";
 import {DropdownModule} from "primeng/dropdown";
 import {InputNumberModule} from "primeng/inputnumber";
 import {SharedModule} from "../shared/shared.module";
+import {HttpClientModule} from "@angular/common/http";
 
 
 
@@ -39,7 +40,8 @@ import {SharedModule} from "../shared/shared.module";
     SelectButtonModule,
     DropdownModule,
     InputNumberModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   exports: [
     LancamentoCadastroComponent,
