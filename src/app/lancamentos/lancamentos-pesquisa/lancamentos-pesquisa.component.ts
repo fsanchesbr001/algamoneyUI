@@ -1,6 +1,7 @@
 import {Component,  OnInit} from '@angular/core';
 import {LancamentoService} from "../lancamento.service";
 import {Lancamento} from "../lancamento";
+import {LancamentoFiltro} from "../lancamento-filtro";
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -8,7 +9,7 @@ import {Lancamento} from "../lancamento";
   styleUrls: ['./lancamentos-pesquisa.component.css']
 })
 export class LancamentosPesquisaComponent implements OnInit{
-
+ filtro = new LancamentoFiltro();
  lancamentos:Lancamento[] = [];
 
   constructor(private lancamentoService:LancamentoService) {
@@ -19,7 +20,9 @@ export class LancamentosPesquisaComponent implements OnInit{
     }
 
   listaLancamentos():void{
-   this.lancamentoService.pesquisar().then(lancamentos=>this.lancamentos=lancamentos);
+
+   this.lancamentoService.pesquisar(this.filtro)
+     .then(resultado=>this.lancamentos=resultado.lancamentos);
   }
 
 }

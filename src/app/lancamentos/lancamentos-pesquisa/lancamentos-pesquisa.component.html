@@ -1,31 +1,70 @@
 <div class="container">
-  <!--
-    Parte Superior
-  -->
-  <div class="grid">
-    <div class="col-12">
-      <h1>Lançamentos</h1>
-    </div>
+  <form autocomplete="off" (ngSubmit)="listaLancamentos()">
+    <!--
+      Parte Superior
+    -->
+    <div class="grid">
+      <div class="col-12">
+        <h1>Lançamentos</h1>
+      </div>
 
-    <div class="col-12 p-fluid">
-      <label>Descrição</label>
-      <input type="text" pInputText>
+      <div class="col-12 p-fluid">
+        <label>Descrição</label>
+        <input type="text" pInputText name="descricao" [(ngModel)]="filtro.descricao">
+      </div>
+      <div class="col-12">
+        <label style="display: block">Vencimento</label>
+        <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{width:'105px'}" name="vencimentoInicio"
+        [(ngModel)]="filtro.dataVencimentoIincio"></p-calendar>
+        <label> até </label>
+        <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{width:'105px'}" name="vencimentoFim"
+                    [(ngModel)]="filtro.dataVencimentoFim"></p-calendar>
+      </div>
+      <div class="col-12">
+        <button pButton type="submit" label="Pesquisar"></button>
+      </div>
     </div>
-    <div class="col-12">
-      <label style="display: block">Vencimento</label>
-      <input type="text" pInputText style="width: 100px">
-      <label> até </label>
-      <input type="text" pInputText style="width: 100px">
-    </div>
-    <div class="col-12">
-      <button pButton type="submit" label="Pesquisar"></button>
-    </div>
-  </div>
+  </form>
   <!--
     Tabela de dados
   -->
-  <app-lancamentos-grid [lancamentos]="lancamentos"></app-lancamentos-grid>
-
+  <div class="grid">
+    <div class="col-12">
+      <p-table [value]="lancamentos" [paginator]="true" [rows]="5" [responsive]="true">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Pessoa</th>
+            <th>Descrição</th>
+            <th class="col-data">Vencimento</th>
+            <th class=" col-data">Pagamento</th>
+            <th class="col-valor">Valor</th>
+            <th class="col-acoes">Açoes</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-lancamento>
+          <tr>
+            <td>{{lancamento.pessoa}}</td>
+            <td>{{lancamento.descricao}}</td>
+            <td class="col-data">{{lancamento.dataVencimento | date:'dd/MM/yy'}}</td>
+            <td class="col-data">{{lancamento.dataPagamento | date:'dd/MM/yy'}}</td>
+            <td class="col-valor" [style.color]="lancamento.tipo==='DESPESA' ? 'red':'blue'">{{lancamento.valor
+              |currency:'BRL':'symbol-narrow':'1.2-2'}}</td>
+            <td class="col-acoes">
+              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
+              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="6">
+              Nenhum lançamento encontrado
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
   <div class="col-12">
     <a pButton label="Novo Lançamento"></a>
   </div>
