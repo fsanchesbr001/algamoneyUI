@@ -10,7 +10,6 @@ import {TooltipModule} from "primeng/tooltip";
 
 import {PessoaCadastroComponent} from "./pessoa-cadastro/pessoa-cadastro.component";
 import {PessoasPesquisaComponent} from "./pessoas-pesquisa/pessoas-pesquisa.component";
-import {PessoasGridComponent} from "./pessoas-grid/pessoas-grid.component";
 import {InputTextareaModule} from "primeng/inputtextarea";
 import {CalendarModule} from "primeng/calendar";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -24,8 +23,7 @@ import {SharedModule} from "../shared/shared.module";
 @NgModule({
   declarations: [
     PessoaCadastroComponent,
-    PessoasPesquisaComponent,
-    PessoasGridComponent
+    PessoasPesquisaComponent
   ],
   imports: [
     CommonModule,
