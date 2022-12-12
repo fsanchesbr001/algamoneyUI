@@ -1,8 +1,10 @@
-import {Component,  OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {LancamentoService} from "../lancamento.service";
 import {Lancamento} from "../lancamento";
 import {LancamentoFiltro} from "../lancamento-filtro";
-import {LazyLoadEvent} from "primeng/api";
+import {ConfirmationService, LazyLoadEvent, MessageService} from "primeng/api";
+import {Table} from "primeng/table";
+import {ErrorHandlerService} from "../../core/error-handler.service";
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -14,11 +16,16 @@ export class LancamentosPesquisaComponent implements OnInit{
  lancamentos:Lancamento[] = [];
  totalRegistros = 0;
 
-  constructor(private lancamentoService:LancamentoService) {
+  @ViewChild('tabela') grid!: Table;
+
+  constructor(private lancamentoService:LancamentoService,
+              private messageService:MessageService,
+              private confirmation:ConfirmationService,
+              private errorService:ErrorHandlerService) {
   }
 
   ngOnInit(): void {
-     // this.listaLancamentos();
+
     }
 
   listaLancamentos(pagina =0):void{
@@ -27,12 +34,27 @@ export class LancamentosPesquisaComponent implements OnInit{
      .then(resultado=>{
        this.lancamentos = resultado.lancamentos;
        this.totalRegistros = resultado.total;
-     });
+     })
+     .catch(erro=>this.errorService.handle(erro));
   }
 
 
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first!  / event.rows!;
     this.listaLancamentos(pagina);
+  }
+  excluir(lancamento:any){
+    this.confirmation.confirm({
+      message:'Deseja excluir realmente?',
+      accept:()=>{
+        this.lancamentoService.excluir(lancamento.codigo)
+          .then(()=>{
+            this.grid.reset();
+            this.messageService.add({severity:'success',detail:'Lancamento Excluido com sucesso'
+              ,closable:true,life:3000});
+          })
+          .catch(erro=>this.errorService.handle(erro));
+      }
+    });
   }
 }
