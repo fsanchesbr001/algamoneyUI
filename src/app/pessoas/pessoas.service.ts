@@ -35,6 +35,15 @@ export class PessoasService {
 
   }
 
+  excluir(codigo:number):Promise<any>{
+    const headers = new HttpHeaders()
+      .append('Authorization','Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu');
+
+    return this.http.delete(`${this.pessoasUrl}/${codigo}`,
+      {headers}).toPromise()
+      .then(()=>null);
+  }
+
   pesquisarTodos():Promise<any>{
     const headers = new HttpHeaders()
       .append('Authorization','Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu');

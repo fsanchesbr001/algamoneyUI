@@ -7,7 +7,7 @@ import { DatePipe } from '@angular/common';
   providedIn: 'root'
 })
 export class LancamentoService {
-  lancamentosUrl = 'http://localhost:3080/lancamentos';
+  lancamentosUrl = 'http://localhost:8080/lancamentos';
 
   private datePipe = new DatePipe('pt-BR');
 
