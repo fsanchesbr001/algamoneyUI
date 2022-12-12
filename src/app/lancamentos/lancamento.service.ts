@@ -7,7 +7,7 @@ import { DatePipe } from '@angular/common';
   providedIn: 'root'
 })
 export class LancamentoService {
-  lancamentosUrl = 'http://localhost:8080/lancamentos';
+  lancamentosUrl = 'http://localhost:3080/lancamentos';
 
   private datePipe = new DatePipe('pt-BR');
 
@@ -43,5 +43,14 @@ export class LancamentoService {
         };
         return resultado;
       });
+  }
+
+  excluir(codigo:number):Promise<any>{
+    const headers = new HttpHeaders()
+      .append('Authorization','Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu');
+
+    return this.http.delete(`${this.lancamentosUrl}/${codigo}`,
+      {headers}).toPromise()
+      .then(()=>null);
   }
 }

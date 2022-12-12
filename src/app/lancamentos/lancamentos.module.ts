@@ -17,6 +17,7 @@ import {DropdownModule} from "primeng/dropdown";
 import {InputNumberModule} from "primeng/inputnumber";
 import {SharedModule} from "../shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
+import {ToastModule} from "primeng/toast";
 
 
 
@@ -26,22 +27,23 @@ import {HttpClientModule} from "@angular/common/http";
     LancamentosPesquisaComponent
 
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    InputTextModule,
-    ButtonModule,
-    TableModule,
-    TooltipModule,
-    InputTextareaModule,
-    CalendarModule,
-    BrowserAnimationsModule,
-    SelectButtonModule,
-    DropdownModule,
-    InputNumberModule,
-    SharedModule,
-    HttpClientModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        InputTextModule,
+        ButtonModule,
+        TableModule,
+        TooltipModule,
+        InputTextareaModule,
+        CalendarModule,
+        BrowserAnimationsModule,
+        SelectButtonModule,
+        DropdownModule,
+        InputNumberModule,
+        SharedModule,
+        HttpClientModule,
+        ToastModule
+    ],
   exports: [
     LancamentoCadastroComponent,
     LancamentosPesquisaComponent
