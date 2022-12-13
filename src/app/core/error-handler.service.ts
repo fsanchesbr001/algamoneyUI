@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {MessageService} from "primeng/api";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,18 @@ export class ErrorHandlerService {
   handle(errorResponse:any){
     let msg:string='';
     if(typeof errorResponse==='string'){
+      console.log('if 1');
       msg = errorResponse;
+    }
+    else if (errorResponse instanceof HttpErrorResponse && errorResponse.status>=400
+      && errorResponse.status<=499){
+      try {
+        msg = errorResponse.error[0].mensagemUsuario;
+      }
+      catch (e) {
+        console.error('Ocorreu um erro', errorResponse);
+        msg='Erro nao identificado';
+      }
     }
     else{
       msg='Erro ao processar chamada remota. Tente novamente';
