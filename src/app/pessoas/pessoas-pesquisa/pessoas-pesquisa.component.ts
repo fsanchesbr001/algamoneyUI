@@ -54,4 +54,22 @@ export class PessoasPesquisaComponent {
       }
     });
   }
+
+  alterarStatus(pessoa:any):void{
+
+    const novoStatus = !pessoa.ativo;
+
+    this.pessoaService.mudarStatus(pessoa.codigo,novoStatus)
+      .then(()=>{
+        const acao = novoStatus ? 'ativada' : 'desativada';
+        pessoa.ativo = novoStatus;
+        this.grid.reset();
+        this.messageService.add({severity:'success',detail:`Pessoa ${acao} com sucesso`
+          ,closable:true,life:3000});
+      })
+      .catch(erro=>this.errorService.handle(erro));
+
+
+  }
+
 }
