@@ -35,6 +35,25 @@ export class PessoasService {
 
   }
 
+  excluir(codigo:number):Promise<any>{
+    const headers = new HttpHeaders()
+      .append('Authorization','Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu');
+
+    return this.http.delete(`${this.pessoasUrl}/${codigo}`,
+      {headers},).toPromise()
+      .then(()=>null);
+  }
+
+  mudarStatus(codigo:number, status:boolean):Promise<any>{
+    const headers = new HttpHeaders()
+      .append('Authorization','Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu')
+      .append('Content-Type','application/json');
+
+    return this.http.put<void>(`${this.pessoasUrl}/${codigo}/ativo`,status,
+      {headers}).toPromise()
+      .then(()=>null);
+  }
+
   pesquisarTodos():Promise<any>{
     const headers = new HttpHeaders()
       .append('Authorization','Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu');
