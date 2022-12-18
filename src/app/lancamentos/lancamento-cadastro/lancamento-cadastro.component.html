@@ -38,12 +38,12 @@
       </div>
       <div class="col-12 md:col-6 p-fluid">
         <label>Categoria</label>
-        <p-dropdown name="categorias" [(ngModel)]="lancamento.categoria" #categoria="ngModel" [required]="true"
+        <p-dropdown name="categorias" [(ngModel)]="lancamento.categorias.codigo" #categoria="ngModel" [required]="true"
                     [options]="categorias" placeholder="Selecione"></p-dropdown>
       </div>
       <div class="col-12 md:col-6 p-fluid">
         <label>Pessoa</label>
-        <p-dropdown name="pessoa" [(ngModel)]="lancamento.pessoa"  #pessoa="ngModel" [required]="true"
+        <p-dropdown name="pessoa" [(ngModel)]="lancamento.pessoa.codigo"  #pessoa="ngModel" [required]="true"
                     [options]="pessoas" [filter]="true" placeholder="Selecione"></p-dropdown>
       </div>
       <div class="col-12 p-fluid">

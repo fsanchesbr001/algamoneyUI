@@ -9,6 +9,6 @@ export class Lancamento{
     valor!:number;
     tipo:string='RECEITA';
     pessoa = new Pessoa();
-    categoria=new Categoria();
+    categorias=new Categoria();
     observacao!: string;
 }
