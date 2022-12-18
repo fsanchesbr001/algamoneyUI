@@ -59,11 +59,6 @@ export class PessoasService {
       .append('Authorization','Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu');
 
     return this.http.get(`${this.pessoasUrl}`,{headers}).toPromise()
-      .then((response:any)=>{
-        const pessoas = response['content'];
-        const resultado = {
-          pessoas};
-        return resultado;
-      });
+      .then((response:any)=>{return response});
   }
 }
