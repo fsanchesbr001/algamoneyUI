@@ -10,6 +10,7 @@ import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate
 import {HttpClient} from "@angular/common/http";
 import {HttpLoaderFactory} from "../app.module";
 import {ConfirmationService, MessageService} from "primeng/api";
+import {RouterModule} from "@angular/router";
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -18,6 +19,7 @@ registerLocaleData(localePt, 'pt-BR');
   imports: [
     CommonModule,
     ToastModule,
+    RouterModule,
     ConfirmDialogModule,
     TranslateModule.forRoot({
       loader: {
