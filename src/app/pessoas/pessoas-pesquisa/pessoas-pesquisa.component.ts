@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {PessoasFiltro} from "../pessoas-filtro";
-import {Pessoa} from "../pessoa";
+import {Pessoa} from "../../core/modelos/pessoa";
 import {PessoasService} from "../pessoas.service";
 import {ConfirmationService, LazyLoadEvent, MessageService} from "primeng/api";
 import {Table} from "primeng/table";

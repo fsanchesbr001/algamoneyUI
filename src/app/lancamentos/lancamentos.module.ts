@@ -18,6 +18,7 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {SharedModule} from "../shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
 import {ToastModule} from "primeng/toast";
+import {RouterLinkWithHref} from "@angular/router";
 
 
 
@@ -27,23 +28,24 @@ import {ToastModule} from "primeng/toast";
     LancamentosPesquisaComponent
 
   ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        InputTextModule,
-        ButtonModule,
-        TableModule,
-        TooltipModule,
-        InputTextareaModule,
-        CalendarModule,
-        BrowserAnimationsModule,
-        SelectButtonModule,
-        DropdownModule,
-        InputNumberModule,
-        SharedModule,
-        HttpClientModule,
-        ToastModule
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    InputTextModule,
+    ButtonModule,
+    TableModule,
+    TooltipModule,
+    InputTextareaModule,
+    CalendarModule,
+    BrowserAnimationsModule,
+    SelectButtonModule,
+    DropdownModule,
+    InputNumberModule,
+    SharedModule,
+    HttpClientModule,
+    ToastModule,
+    RouterLinkWithHref
+  ],
   exports: [
     LancamentoCadastroComponent,
     LancamentosPesquisaComponent

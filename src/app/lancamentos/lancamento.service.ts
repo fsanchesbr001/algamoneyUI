@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {LancamentoFiltro} from "./lancamento-filtro";
 import { DatePipe } from '@angular/common';
+import {Lancamento} from "../core/modelos/lancamento";
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +53,14 @@ export class LancamentoService {
     return this.http.delete(`${this.lancamentosUrl}/${codigo}`,
       {headers}).toPromise()
       .then(()=>null);
+  }
+
+  adicionar(lancamento:Lancamento):Promise<any>{
+    const headers = new HttpHeaders()
+      .append('Authorization','Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu')
+      .append('Content-Type','application/json');
+
+    return this.http.post<Lancamento>(this.lancamentosUrl,lancamento,
+      {headers}).toPromise();
   }
 }
