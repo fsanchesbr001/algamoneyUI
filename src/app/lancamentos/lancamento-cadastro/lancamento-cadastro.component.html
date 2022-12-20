@@ -3,7 +3,7 @@
         (ngSubmit)="salvar(lancamentoForm)">
     <div class="grid">
       <div class="col-12">
-        <h1>Novo Lançamento</h1>
+        <h1>{{editando ? 'Editando' : 'Novo'}} Lançamento</h1>
       </div>
       <div class="col-12">
         <p-selectButton [options]="tipos" #tipo [(ngModel)]="lancamento.tipo" name="tipo"></p-selectButton>
@@ -52,7 +52,7 @@
       </div>
       <div class="col-12">
         <button name="btnSunmit" type="submit" pButton [disabled]="!lancamentoForm.valid">Salvar</button>
-        <button name="btnNovo" type="button" pButton class="p-button-info">Novo</button>
+        <button name="btnNovo" type="button" pButton class="p-button-info" (click)="novo(lancamentoForm)">Novo</button>
         <a routerLink="/lancamentos">Voltar para a pesquisa</a>
       </div>
     </div>

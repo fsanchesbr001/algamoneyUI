@@ -63,4 +63,38 @@ export class LancamentoService {
     return this.http.post<Lancamento>(this.lancamentosUrl,lancamento,
       {headers}).toPromise();
   }
+
+  atualizar(lancamento:Lancamento):Promise<any>{
+    const headers = new HttpHeaders()
+      .append('Authorization','Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu')
+      .append('Content-Type','application/json');
+
+    return this.http.put<Lancamento>(`${this.lancamentosUrl}/${lancamento.codigo}`,lancamento,
+      {headers}).toPromise();
+
+  }
+
+  buscarPorCodigo(codigo:number):Promise<any>{
+    const headers = new HttpHeaders()
+      .append('Authorization','Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu')
+      .append('Content-Type','application/json');
+    return this.http.get(`${this.lancamentosUrl}/${codigo}`,
+      {headers}).toPromise()
+      .then((response:any)=>{
+        this.converterStringParaData([response]);
+        return response;
+      });
+  }
+
+  converterStringParaData(lancamentos:Lancamento[]){
+    for (const lancamento of lancamentos) {
+      let offset = new Date().getTimezoneOffset() * 60000;
+
+      lancamento.dataVencimento = new Date(new Date(lancamento.dataVencimento!).getTime() + offset);
+
+      if (lancamento.dataPagamento) {
+        lancamento.dataPagamento = new Date(new Date(lancamento.dataPagamento).getTime() + offset);
+      }
+    }
+  }
 }
