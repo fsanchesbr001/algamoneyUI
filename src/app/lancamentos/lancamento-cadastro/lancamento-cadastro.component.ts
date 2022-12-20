@@ -6,6 +6,7 @@ import { NgForm} from "@angular/forms";
 import {LancamentoService} from "../lancamento.service";
 import {MessageService} from "primeng/api";
 import {ErrorHandlerService} from "../../core/error-handler.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -28,11 +29,22 @@ export class LancamentoCadastroComponent implements OnInit {
               private pessoaService:PessoasService,
               private lancamentoService:LancamentoService,
               private messageService:MessageService,
-              private errorService:ErrorHandlerService) { }
+              private errorService:ErrorHandlerService,
+              private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    const codigoLancamento = this.route.snapshot.params['codigo'];
+    if(codigoLancamento){
+      this.carregarLancamento(codigoLancamento);
+    }
+
     this.carregaPessoas();
     this.carregarCategorias();
+  }
+
+  get editando():Boolean{
+    return Boolean(this.lancamento.codigo);
   }
 
   carregaPessoas(){
@@ -54,12 +66,37 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   salvar(form: NgForm){
+    if (this.editando){
+      this.atualizarLancamento(form);
+    }
+    else {
+      this.adicionarLancamento(form);
+    }
+  }
+
+  atualizarLancamento(form: NgForm){
+    this.lancamentoService.adicionar(this.lancamento).then((lancamento)=>{
+      this.lancamento = lancamento;
+      this.messageService.add({severity:'success',detail:'Lancamento Alterado com sucesso'
+        ,closable:true,life:3000});
+    })
+      .catch(erro=>this.errorService.handle(erro))
+  }
+
+  adicionarLancamento(form: NgForm){
     this.lancamentoService.adicionar(this.lancamento).then(()=>{
       this.messageService.add({severity:'success',detail:'Lancamento Incluido com sucesso'
         ,closable:true,life:3000});
 
       form.reset();
       this.lancamento = new Lancamento();
+    })
+      .catch(erro=>this.errorService.handle(erro))
+  }
+
+  carregarLancamento(codigo:number){
+    this.lancamentoService.buscarPorCodigo(codigo).then(lancamento=>{
+      this.lancamento = lancamento;
     })
       .catch(erro=>this.errorService.handle(erro))
   }
