@@ -43,9 +43,6 @@ import {ToastModule} from "primeng/toast";
     SharedModule,
     ToastModule
   ],
-  exports: [
-    PessoaCadastroComponent,
-    PessoasPesquisaComponent
-  ]
+  exports: []
 })
 export class PessoasModule { }

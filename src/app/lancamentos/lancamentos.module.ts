@@ -19,6 +19,7 @@ import {SharedModule} from "../shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
 import {ToastModule} from "primeng/toast";
 import {RouterLinkWithHref} from "@angular/router";
+import {LancamentosRoutingModule} from "./lancamentos-routing.module";
 
 
 
@@ -44,11 +45,8 @@ import {RouterLinkWithHref} from "@angular/router";
     SharedModule,
     HttpClientModule,
     ToastModule,
-    RouterLinkWithHref
+   LancamentosRoutingModule
   ],
-  exports: [
-    LancamentoCadastroComponent,
-    LancamentosPesquisaComponent
-  ]
+  exports: []
 })
 export class LancamentosModule { }

@@ -11,11 +11,13 @@ import {HttpClient} from "@angular/common/http";
 import {HttpLoaderFactory} from "../app.module";
 import {ConfirmationService, MessageService} from "primeng/api";
 import {RouterModule} from "@angular/router";
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
+import {Title} from "@angular/platform-browser";
 
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
-  declarations: [NavbarComponent],
+  declarations: [NavbarComponent, PaginaNaoEncontradaComponent],
   imports: [
     CommonModule,
     ToastModule,
@@ -39,6 +41,7 @@ registerLocaleData(localePt, 'pt-BR');
     MessageService,
     ConfirmationService,
     TranslateService,
+    Title,
     DatePipe,
     {provide: LOCALE_ID,useValue:'pt-BR'}
   ]
