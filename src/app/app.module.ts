@@ -20,10 +20,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-
-    CoreModule,
     LancamentosModule,
+    AppRoutingModule,
+    CoreModule,
     PessoasModule
   ],
   providers: [],

@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {LancamentoCadastroComponent} from "./lancamento-cadastro/lancamento-cadastro.component";
-import {LancamentosPesquisaComponent} from "./lancamentos-pesquisa/lancamentos-pesquisa.component";
-
 import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {HttpClientModule} from "@angular/common/http";
 
 import {InputTextModule} from "primeng/inputtext";
 import {ButtonModule} from "primeng/button";
@@ -15,13 +13,12 @@ import {CalendarModule} from "primeng/calendar";
 import {SelectButtonModule} from "primeng/selectbutton";
 import {DropdownModule} from "primeng/dropdown";
 import {InputNumberModule} from "primeng/inputnumber";
-import {SharedModule} from "../shared/shared.module";
-import {HttpClientModule} from "@angular/common/http";
 import {ToastModule} from "primeng/toast";
-import {RouterLinkWithHref} from "@angular/router";
+
+import {SharedModule} from "../shared/shared.module";
 import {LancamentosRoutingModule} from "./lancamentos-routing.module";
-
-
+import {LancamentoCadastroComponent} from "./lancamento-cadastro/lancamento-cadastro.component";
+import {LancamentosPesquisaComponent} from "./lancamentos-pesquisa/lancamentos-pesquisa.component";
 
 @NgModule({
   declarations: [
@@ -32,6 +29,7 @@ import {LancamentosRoutingModule} from "./lancamentos-routing.module";
   imports: [
     CommonModule,
     FormsModule,
+    LancamentosRoutingModule,
     InputTextModule,
     ButtonModule,
     TableModule,
@@ -45,7 +43,6 @@ import {LancamentosRoutingModule} from "./lancamentos-routing.module";
     SharedModule,
     HttpClientModule,
     ToastModule,
-   LancamentosRoutingModule
   ],
   exports: []
 })
