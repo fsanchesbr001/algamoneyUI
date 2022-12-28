@@ -21,9 +21,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   imports: [
     BrowserModule,
     LancamentosModule,
+    PessoasModule,
     AppRoutingModule,
-    CoreModule,
-    PessoasModule
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

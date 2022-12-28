@@ -18,6 +18,7 @@ import {DropdownModule} from "primeng/dropdown";
 import {InputNumberModule} from "primeng/inputnumber";
 import {SharedModule} from "../shared/shared.module";
 import {ToastModule} from "primeng/toast";
+import {PessoasRoutingModule} from "./pessoas-routing.module";
 
 
 
@@ -41,7 +42,8 @@ import {ToastModule} from "primeng/toast";
     InputNumberModule,
     InputMaskModule,
     SharedModule,
-    ToastModule
+    ToastModule,
+    PessoasRoutingModule
   ],
   exports: []
 })

@@ -79,7 +79,7 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   atualizarLancamento(form: NgForm){
-    this.lancamentoService.adicionar(this.lancamento).then((lancamento)=>{
+    this.lancamentoService.atualizar(this.lancamento).then((lancamento)=>{
       this.lancamento = lancamento;
       this.messageService.add({severity:'success',detail:'Lancamento Alterado com sucesso'
         ,closable:true,life:3000});
