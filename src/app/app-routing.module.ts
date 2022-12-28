@@ -5,7 +5,6 @@ import {PaginaNaoEncontradaComponent} from "./core/pagina-nao-encontrada/pagina-
 
 const routes: Routes = [
   {path:'', redirectTo:'lancamentos',pathMatch:"full"},
-  {path:'pessoas', component:PessoasPesquisaComponent},
   {path:'pagina-nao-encontrada', component:PaginaNaoEncontradaComponent},
   {path:'**', redirectTo:'pagina-nao-encontrada'}
 ];

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {PessoasFiltro} from "./pessoas-filtro";
 import {Pessoa} from "../core/modelos/pessoa";
+import {Lancamento} from "../core/modelos/lancamento";
 
 @Injectable({
   providedIn: 'root'
@@ -70,5 +71,27 @@ export class PessoasService {
 
     return this.http.post<Pessoa>(this.pessoasUrl,pessoa,
       {headers}).toPromise();
+  }
+
+  buscarPorCodigo(codigo: number):Promise<any>{
+    const headers = new HttpHeaders()
+      .append('Authorization','Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu')
+      .append('Content-Type','application/json');
+    return this.http.get(`${this.pessoasUrl}/${codigo}`,
+      {headers}).toPromise()
+      .then((response:any)=>{
+      //  this.converterStringParaData([response]);
+        return response;
+      });
+  }
+
+  atualizar(pessoa:Pessoa):Promise<any>{
+    const headers = new HttpHeaders()
+      .append('Authorization','Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu')
+      .append('Content-Type','application/json');
+
+    return this.http.put<Pessoa>(`${this.pessoasUrl}/${pessoa.codigo}`,pessoa,
+      {headers}).toPromise();
+
   }
 }
