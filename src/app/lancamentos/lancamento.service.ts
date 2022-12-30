@@ -70,7 +70,10 @@ export class LancamentoService {
       .append('Content-Type','application/json');
 
     return this.http.put<Lancamento>(`${this.lancamentosUrl}/${lancamento.codigo}`,lancamento,
-      {headers}).toPromise();
+      {headers}).toPromise().then((response:any)=>{
+        this.converterStringParaData([response]);
+        return response;
+    });
 
   }
 
