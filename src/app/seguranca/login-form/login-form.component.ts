@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Login} from "../../core/modelos/login";
+import {AuthService} from "../auth.service";
+import {ErrorHandlerService} from "../../core/error-handler.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-form',
@@ -7,13 +9,18 @@ import {Login} from "../../core/modelos/login";
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
-  constructor() { }
+  constructor(private auth:AuthService,
+              private router:Router,
+              private error:ErrorHandlerService) { }
 
   ngOnInit(): void {
   }
 
   login(usuario:String,senha:String) {
-    console.log(usuario);
-    console.log(senha);
+    this.auth.login(usuario,senha)
+      .then(()=>this.router.navigate(['/lancamentos']))
+      .catch(erro=>{
+        this.error.handle(erro);
+      });
   }
 }

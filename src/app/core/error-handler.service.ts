@@ -12,7 +12,6 @@ export class ErrorHandlerService {
   handle(errorResponse:any){
     let msg:string='';
     if(typeof errorResponse==='string'){
-      console.log('if 1');
       msg = errorResponse;
     }
     else if (errorResponse instanceof HttpErrorResponse && errorResponse.status>=400

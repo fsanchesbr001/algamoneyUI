@@ -14,7 +14,7 @@
       </div>
       <div class="col-12">
         <button type="submit" pButton [disabled]="!loginForm.valid"
-        (click)="login(usuario.value,senha.value)">Login</button>
+        (click)="login(usuario.value,senha.value);senha.value='';">Login</button>
       </div>
     </div>
   </form>
