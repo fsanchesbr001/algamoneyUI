@@ -9,7 +9,9 @@ import {SharedModule} from "../shared/shared.module";
 import {InputTextModule} from "primeng/inputtext";
 import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 
-
+export function tokenGetter(): string {
+  return localStorage.getItem('token')!;
+}
 
 @NgModule({
   declarations: [
@@ -18,9 +20,9 @@ import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
   imports: [
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          return '';
-        }
+        tokenGetter,
+        allowedDomains: ['localhost:8080'],
+        disallowedRoutes: ['http://localhost:8080/oauth/token']
       }
     }),
     CommonModule,
@@ -32,4 +34,8 @@ import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
   ],
   providers: [JwtHelperService]
 })
-export class SegurancaModule { }
+
+
+export class SegurancaModule {
+
+}
