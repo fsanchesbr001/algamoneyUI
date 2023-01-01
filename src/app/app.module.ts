@@ -8,6 +8,7 @@ import {PessoasModule} from "./pessoas/pessoas.module";
 import {CoreModule} from "./core/core.module";
 import {HttpClient} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {SegurancaModule} from "./seguranca/seguranca.module";
 
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -22,6 +23,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     BrowserModule,
     LancamentosModule,
     PessoasModule,
+    SegurancaModule,
     AppRoutingModule,
     CoreModule
   ],

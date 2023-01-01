@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {PessoasPesquisaComponent} from "./pessoas/pessoas-pesquisa/pessoas-pesquisa.component";
 import {PaginaNaoEncontradaComponent} from "./core/pagina-nao-encontrada/pagina-nao-encontrada.component";
 
 const routes: Routes = [
