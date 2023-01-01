@@ -13,6 +13,7 @@ import {ConfirmationService, MessageService} from "primeng/api";
 import {RouterModule} from "@angular/router";
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import {Title} from "@angular/platform-browser";
+import {AuthService} from "../seguranca/auth.service";
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -43,6 +44,7 @@ registerLocaleData(localePt, 'pt-BR');
     TranslateService,
     Title,
     DatePipe,
+    AuthService,
     {provide: LOCALE_ID,useValue:'pt-BR'}
   ]
 })
