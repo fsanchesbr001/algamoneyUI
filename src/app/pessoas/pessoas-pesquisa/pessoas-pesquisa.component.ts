@@ -67,7 +67,6 @@ export class PessoasPesquisaComponent {
       .then(()=>{
         const acao = novoStatus ? 'ativada' : 'desativada';
         pessoa.ativo = novoStatus;
-        this.grid.reset();
         this.messageService.add({severity:'success',detail:`Pessoa ${acao} com sucesso`
           ,closable:true,life:3000});
       })
