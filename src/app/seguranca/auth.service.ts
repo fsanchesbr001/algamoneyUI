@@ -21,7 +21,7 @@ export class AuthService {
       .append('Content-Type','application/x-www-form-urlencoded');
     const body =`client=angular&username=${usuario}&password=${senha}&grant_type=password`;
 
-    return this.http.post(this.oauthTokenUrl,body,{headers}).toPromise().then((response:any)=>{
+    return this.http.post(this.oauthTokenUrl,body,{headers,withCredentials:true}).toPromise().then((response:any)=>{
       this.armazenarToken(response['access_token']);
     })
       .catch(response=>{
@@ -43,5 +43,32 @@ export class AuthService {
     if(token){
       this.armazenarToken(token);
     }
+  }
+
+  temPermissao(permissao:string){
+    return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
+  }
+
+  obterNovoAccessToken():Promise<any>{
+    const headers = new HttpHeaders()
+      .append('Authorization','Basic YW5ndWxhcjpAbmd1bEByMA==')
+      .append('Content-Type','application/x-www-form-urlencoded');
+    const body =`grant_type=refresh_token`;
+
+    return this.http.post(this.oauthTokenUrl,body,{headers,withCredentials:true}).toPromise()
+      .then((response:any)=>{
+      this.armazenarToken(response['access_token']);
+      console.log('Novo access_token gerado');
+        return Promise.resolve(null);
+    })
+      .catch(response=>{
+        console.error('Erro ao renovar access token ',response);
+        return Promise.resolve(null);
+      });
+  }
+
+  isAccessTokenInvalido(){
+    const token = localStorage.getItem('token');
+    return !token || this.jwtHelper.isTokenExpired(token);
   }
 }

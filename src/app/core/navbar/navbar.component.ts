@@ -15,4 +15,8 @@ export class NavbarComponent {
   ngOnInit() {
     this.usuarioLogado = this.auth.jwtPayload?.nome;
   }
+
+  temPermissao(permissao:string){
+    return this.auth.temPermissao(permissao);
+  }
 }
