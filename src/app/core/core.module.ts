@@ -14,11 +14,12 @@ import {RouterModule} from "@angular/router";
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import {Title} from "@angular/platform-browser";
 import {AuthService} from "../seguranca/auth.service";
+import { AcessoNaoAutorizadoComponent } from './acesso-nao-autorizado/acesso-nao-autorizado.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
-  declarations: [NavbarComponent, PaginaNaoEncontradaComponent],
+  declarations: [NavbarComponent, PaginaNaoEncontradaComponent, AcessoNaoAutorizadoComponent],
   imports: [
     CommonModule,
     ToastModule,

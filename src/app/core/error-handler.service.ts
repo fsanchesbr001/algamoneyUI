@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import {MessageService} from "primeng/api";
 import {HttpErrorResponse} from "@angular/common/http";
+import {Router} from "@angular/router";
+import {NotAuthenticatedError} from "../seguranca/money-http-interceptor";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorHandlerService {
 
-  constructor(private messageService:MessageService) { }
+  constructor(private messageService:MessageService,
+              private route:Router) { }
 
   handle(errorResponse:any){
     let msg:string='';
@@ -17,12 +20,19 @@ export class ErrorHandlerService {
     else if (errorResponse instanceof HttpErrorResponse && errorResponse.status>=400
       && errorResponse.status<=499){
       try {
-        msg = errorResponse.error[0].mensagemUsuario;
+        msg = errorResponse.message;
+        if(errorResponse.status===403){
+          msg = 'Você não tem permissão para executar esta ação';
+        }
       }
       catch (e) {
         console.error('Ocorreu um erro', errorResponse);
         msg='Erro nao identificado';
       }
+    }
+    else if(errorResponse instanceof NotAuthenticatedError){
+      msg='Sua Sessão expirou, favor logar novamente';
+      this.route.navigate(['/login']);
     }
     else{
       msg='Erro ao processar chamada remota. Tente novamente';
