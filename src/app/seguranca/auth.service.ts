@@ -8,6 +8,7 @@ import {JwtHelperService} from "@auth0/angular-jwt";
 export class AuthService {
 
   oauthTokenUrl = 'http://localhost:8080/oauth/token';
+  revokeUrl = 'http://localhost:8080/tokens/revoke';
   jwtPayload:any;
 
   constructor(private http:HttpClient, private jwtHelper:JwtHelperService) {
@@ -49,6 +50,15 @@ export class AuthService {
     return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
   }
 
+  temQualquerPoermissao(roles: any){
+    for (const role of roles){
+      if(this.temPermissao(role)){
+        return true;
+      }
+    }
+    return false;
+  }
+
   obterNovoAccessToken():Promise<any>{
     const headers = new HttpHeaders()
       .append('Authorization','Basic YW5ndWxhcjpAbmd1bEByMA==')
@@ -70,5 +80,16 @@ export class AuthService {
   isAccessTokenInvalido(){
     const token = localStorage.getItem('token');
     return !token || this.jwtHelper.isTokenExpired(token);
+  }
+
+  limparAccessToken(){
+    localStorage.removeItem('token');
+    this.jwtPayload = null;
+  }
+
+  logout(){
+    return this.http.delete(this.revokeUrl,{ withCredentials:true}).toPromise().then(()=>{
+      this.limparAccessToken();
+    })
   }
 }
