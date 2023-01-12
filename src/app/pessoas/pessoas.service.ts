@@ -2,14 +2,17 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {PessoasFiltro} from "./pessoas-filtro";
 import {Pessoa} from "../core/modelos/pessoa";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PessoasService {
-  pessoasUrl = 'http://localhost:8080/pessoas';
+  pessoasUrl:string = '';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+    this.pessoasUrl = `${environment.apiUrl}/pessoas`;
+  }
 
   pesquisar(filro:PessoasFiltro):Promise<any> {
     let params = new HttpParams();
