@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import {HttpClient,HttpHeaders} from "@angular/common/http";
 import {JwtHelperService} from "@auth0/angular-jwt";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  oauthTokenUrl = 'http://localhost:8080/oauth/token';
-  revokeUrl = 'http://localhost:8080/tokens/revoke';
+  oauthTokenUrl:string = '';
+  revokeUrl:string = '';
   jwtPayload:any;
 
   constructor(private http:HttpClient, private jwtHelper:JwtHelperService) {
+    this.oauthTokenUrl = `${environment.apiUrl}/oauth/token`;
+    this.revokeUrl = `${environment.apiUrl}/tokens/revoke`;
     this.carregarToken();
   }
 

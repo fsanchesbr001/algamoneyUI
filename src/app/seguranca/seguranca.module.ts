@@ -10,6 +10,7 @@ import {InputTextModule} from "primeng/inputtext";
 import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {MoneyHttpInterceptor} from "./money-http-interceptor";
+import {environment} from "../../environments/environment";
 
 export function tokenGetter(): string {
   return localStorage.getItem('token')!;
@@ -23,8 +24,8 @@ export function tokenGetter(): string {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        allowedDomains: ['localhost:8080'],
-        disallowedRoutes: ['http://localhost:8080/oauth/token']
+        allowedDomains: environment.tokenAllowedDomains,
+        disallowedRoutes: environment.tokenDisallowedRoutes
       }
     }),
     CommonModule,
