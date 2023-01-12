@@ -27,5 +27,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ------------------------------------------------
-01-PRIMEIRO COMMIT - AULA 10 - ESTE COMMIT NÃO CONTÉM O DESAFIO
-02-Capitulo 13 Completo
+12/01/2023 - Primeiro Release em produção 
+Site:https://algamoney.fabriciosanches.com
+Usuario:admin@admin.com
+Senha:admin
+------------------------------------------------
+Agradeço a Algaworks pelos excelentes cursos que 
+me capacitaram para desenvolver uma aplicação web
+end to end.
+--------------------------------------------------
