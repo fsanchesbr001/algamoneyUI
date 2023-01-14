@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import {ButtonModule} from "primeng/button";
 import {InputMaskModule} from "primeng/inputmask";
@@ -27,24 +27,25 @@ import {PessoasRoutingModule} from "./pessoas-routing.module";
     PessoaCadastroComponent,
     PessoasPesquisaComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    InputTextModule,
-    ButtonModule,
-    TableModule,
-    TooltipModule,
-    InputTextareaModule,
-    CalendarModule,
-    BrowserAnimationsModule,
-    SelectButtonModule,
-    DropdownModule,
-    InputNumberModule,
-    InputMaskModule,
-    SharedModule,
-    ToastModule,
-    PessoasRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        InputTextModule,
+        ButtonModule,
+        TableModule,
+        TooltipModule,
+        InputTextareaModule,
+        CalendarModule,
+        BrowserAnimationsModule,
+        SelectButtonModule,
+        DropdownModule,
+        InputNumberModule,
+        InputMaskModule,
+        SharedModule,
+        ToastModule,
+        PessoasRoutingModule,
+        ReactiveFormsModule
+    ],
   exports: []
 })
 export class PessoasModule { }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 
@@ -29,6 +29,7 @@ import {LancamentosPesquisaComponent} from "./lancamentos-pesquisa/lancamentos-p
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     LancamentosRoutingModule,
     InputTextModule,
     ButtonModule,

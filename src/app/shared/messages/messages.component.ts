@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import { AbstractControl, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-messages',
@@ -8,10 +9,10 @@ import {Component, Input} from '@angular/core';
 export class MessagesComponent {
   @Input() severidade:string = "";
   @Input() texto:string ="";
-  @Input() componente:any;
+  @Input() componente?:AbstractControl | FormControl | null;
   @Input() qualErro:string = "";
 
   temErro():boolean {
-    return this.componente.hasError(this.qualErro) && this.componente.dirty;
+    return this.componente ? this.componente.hasError(this.qualErro) && this.componente.dirty:true;
   }
 }
