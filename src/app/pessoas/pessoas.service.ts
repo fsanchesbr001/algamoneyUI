@@ -56,6 +56,7 @@ export class PessoasService {
   }
 
   adicionar(pessoa: Pessoa):Promise<any> {
+    pessoa.ativo=true;
     return this.http.post<Pessoa>(this.pessoasUrl,pessoa).toPromise();
   }
 

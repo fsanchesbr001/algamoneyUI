@@ -1,68 +1,59 @@
 <div class="container">
-  <form name="pessoaForm" #pessoaForm="ngForm" autocomplete="off" (ngSubmit)="salvar(pessoaForm)">
+  <form name="pessoaForm" autocomplete="off" (ngSubmit)="salvar()" [formGroup]="formulario">
     <div class="grid">
       <div class="col-12">
         <h1>{{editando ? 'Editando' : 'Nova'}} Pessoa</h1>
       </div>
       <div class="col-12 p-fluid">
         <label>Nome</label>
-        <input type="text" pInputText name="nome" ngModel [minlength]="5" [required]="true" #nome="ngModel"
-               [(ngModel)]="pessoa.nome">
-        <app-messages qualErro="required" severidade="error" [componente]="nome" texto="Campo obrigatório"></app-messages>
-        <app-messages qualErro="minlength" severidade="error" [componente]="nome" texto="Mínimo de
-        {{nome.errors?.['minlength']?.requiredLength}} caracteres"></app-messages>
+        <input type="text" pInputText name="nome" formControlName="nome">
+        <app-messages qualErro="required" severidade="error" [componente]="formulario.get('nome')" texto="Campo obrigatório"></app-messages>
+        <app-messages qualErro="minlength" severidade="error" [componente]="formulario.get('nome')" texto="Mínimo de
+        {{formulario.get('nome')?.errors?.['minlength']?.requiredLength}} caracteres"></app-messages>
       </div>
-      <div class="col-12 md:col-9 p-fluid">
+      <div class="col-12 md:col-9 p-fluid" formGroupName="endereco">
         <label>Logradouro</label>
-        <input type="text" pInputText name="logradouro" ngModel #logradouro="ngModel"
-               [required]="true" [(ngModel)]="pessoa.endereco.endereco_logradouro">
-        <app-messages qualErro="required" severidade="error" [componente]="logradouro"
+        <input type="text" pInputText name="logradouro" formControlName="endereco_logradouro">
+        <app-messages qualErro="required" severidade="error" [componente]="formulario.get('endereco')?.get('endereco_logradouro')"
                       texto="Campo obrigatório"></app-messages>
       </div>
-      <div class="col-12 md:col-3 p-fluid">
+      <div class="col-12 md:col-3 p-fluid" formGroupName="endereco">
         <label>Número</label>
-        <input type="text" pInputText [required]="true" name="numero" ngModel #numero=ngModel
-               [(ngModel)]="pessoa.endereco.endereco_numero">
-        <app-messages qualErro="required" severidade="error" [componente]="numero"
+        <input type="text" pInputText name="numero" formControlName="endereco_numero">
+        <app-messages qualErro="required" severidade="error" [componente]="formulario.get('endereco')?.get('endereco_numero')"
                       texto="Campo obrigatório"></app-messages>
       </div>
-      <div class="col-12 md:col-3 p-fluid">
+      <div class="col-12 md:col-3 p-fluid" formGroupName="endereco">
         <label>Complemento</label>
-        <input name="complemento" type="text" pInputText ngModel #complemento=ngModel
-               [(ngModel)]="pessoa.endereco.endereco_complemento">
+        <input name="complemento" type="text" pInputText formControlName="endereco_complemento">
       </div>
-      <div class="col-12 md:col-6 p-fluid">
+      <div class="col-12 md:col-6 p-fluid" formGroupName="endereco">
         <label>Bairro</label>
-        <input type="text" pInputText name="bairro" [required]="true" ngModel #bairro="ngModel"
-               [(ngModel)]="pessoa.endereco.endereco_bairro">
-        <app-messages qualErro="required" severidade="error" [componente]="bairro"
+        <input type="text" pInputText name="bairro" formControlName="endereco_bairro">
+        <app-messages qualErro="required" severidade="error" [componente]="formulario.get('endereco')?.get('endereco_bairro')"
                       texto="Campo obrigatório"></app-messages>
       </div>
-      <div class="col-12 md:col-3 p-fluid">
+      <div class="col-12 md:col-3 p-fluid" formGroupName="endereco">
         <label>C.E.P.</label>
-        <p-inputMask name="cep" [unmask]="true" [required]="true" ngModel #cep="ngModel"
-                     placeholder="99.999-999" mask="99.999-999"
-                     [(ngModel)]="pessoa.endereco.endereco_cep"></p-inputMask>
-        <app-messages qualErro="required" severidade="error" [componente]="cep"
+        <p-inputMask name="cep" [unmask]="true" placeholder="99.999-999" mask="99.999-999" formControlName="endereco_cep"></p-inputMask>
+        <app-messages qualErro="required" severidade="error" [componente]="formulario.get('endereco')?.get('endereco_cep')"
                       texto="Campo obrigatório"></app-messages>
       </div>
-      <div class="col-12 md:col-6 p-fluid">
+      <div class="col-12 md:col-6 p-fluid" formGroupName="endereco">
         <label>Cidade</label>
-        <input type="text" name="cidade" [required]="true" ngModel #cidade="ngModel" pInputText
-               [(ngModel)]="pessoa.endereco.endereco_cidade">
-        <app-messages qualErro="required" severidade="error" [componente]="cidade"
+        <input type="text" name="cidade" pInputText formControlName="endereco_cidade">
+        <app-messages qualErro="required" severidade="error" [componente]="formulario.get('endereco')?.get('endereco_cidade')"
                       texto="Campo obrigatório"></app-messages>
       </div>
-      <div class="col-12 md:col-6 p-fluid">
+      <div class="col-12 md:col-6 p-fluid" formGroupName="endereco">
         <label>Estado</label>
-        <input type="text" pInputText name="estado" ngModel #estado="ngModel" [required]="true"
-               [(ngModel)]="pessoa.endereco.endereco_estado">
-        <app-messages qualErro="required" severidade="error" [componente]="estado"
+        <input type="text" pInputText name="estado" formControlName="endereco_estado">
+        <app-messages qualErro="required" severidade="error" [componente]="formulario.get('endereco')?.get('endereco_estado')"
                       texto="Campo obrigatório"></app-messages>
       </div>
       <div class="col-12">
-        <button type="submit" pButton [disabled]="!pessoaForm.valid">Salvar</button>
-        <button type="button" pButton class="p-button-info" (click)="novo(pessoaForm)">Novo</button>
+        <button type="submit" pButton [disabled]="!formulario.valid">Salvar</button>
+        <button type="button" pButton class="p-button-info" (click)="novo()">Novo</button>
         <a routerLink="/pessoas">Voltar para a pesquisa</a>
       </div>
     </div>
