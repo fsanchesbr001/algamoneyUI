@@ -16,6 +16,16 @@
         <button type="submit" pButton [disabled]="!loginForm.valid"
         (click)="login(usuario.value,senha.value);senha.value='';">Login</button>
       </div>
+      <div class="col-12">
+        <p>
+          Para testar, use as seguintes credenciais:<br>
+          Usuário:admin@admin.com<br>
+          Senha:admin<br>
+          <br>
+          <b>Importante</b>:Este sistema foi desenvolvido como parte de um treinamento de Angular 14 e API Spring Rest
+          da <b>Algawors</b>
+        </p>
+      </div>
     </div>
   </form>
 </div>

@@ -10,9 +10,9 @@
       <div class="col-6 md:col-3 p-fluid">
         <label>Vencimento</label>
        <p-calendar name="dataVencimento" dateFormat="dd/mm/yy" [inline]="false" [showIcon]="true"
-                   [readonlyInput]="true" formControlName="dataVencimento">
+                   [readonlyInput]="false" formControlName="dataVencimento">
        </p-calendar>
-       <app-messages qualErro="required" severidade="error" [componente]="formulario.get('dataVencimento')"
+       <app-messages qualErro="obrigatorio" severidade="error" [componente]="formulario.get('dataVencimento')"
                       texto="Campo obrigatório"></app-messages>
       </div>
       <div class="col-6 md:col-3 p-fluid">
@@ -23,14 +23,14 @@
       <div class="col-12 md:col-9 p-fluid">
         <label>Descrição</label>
         <input pInputText name="descricao" type="text" formControlName="descricao">
-        <app-messages [componente]="formulario.get('descricao')" severidade="error" texto="Campo Obrigatório" qualErro="required"></app-messages>
+        <app-messages [componente]="formulario.get('descricao')" severidade="error" texto="Campo Obrigatório" qualErro="obrigatorio"></app-messages>
         <app-messages [componente]="formulario.get('descricao')" severidade="error" texto="Mínimo de {{formulario.get('descricao')?.errors?.['minlength']?.requiredLength}} caracteres" qualErro="minlength"></app-messages>
       </div>
       <div class="col-12 md:col-3 p-fluid">
         <label>Valor</label>
         <p-inputNumber mode="currency" currency="BRL"  placeholder="0,00" name="valor" formControlName="valor"></p-inputNumber>
         <app-messages [componente]="formulario.get('valor')" severidade="error" texto="Campo Obrigatório"
-                      qualErro="required"></app-messages>
+                      qualErro="valor"></app-messages>
       </div>
       <div class="col-12 md:col-6 p-fluid" formGroupName="categorias">
         <label>Categoria</label>
