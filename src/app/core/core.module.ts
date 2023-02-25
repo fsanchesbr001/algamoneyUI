@@ -15,6 +15,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao
 import {Title} from "@angular/platform-browser";
 import {AuthService} from "../seguranca/auth.service";
 import { AcessoNaoAutorizadoComponent } from './acesso-nao-autorizado/acesso-nao-autorizado.component';
+import {DashboardService} from "../dashboard/dashboard.service";
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -45,6 +46,7 @@ registerLocaleData(localePt, 'pt-BR');
     TranslateService,
     Title,
     DatePipe,
+    DashboardService,
     AuthService,
     {provide: LOCALE_ID,useValue:'pt-BR'}
   ]

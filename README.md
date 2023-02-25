@@ -28,6 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 -----------------------------------------------------------------
 14/01/23 - Capitulo 21.5 - Forms Reativos - Lancamentos e Pessoas
+25/02/23 - Capítulo 23.6 - Gráficos Completos
 -----------------------------------------------------------------
 
 ------------------------------------------------------------------
@@ -39,4 +40,4 @@ Senha:admin
 Agradeço a Algaworks pelos excelentes cursos que 
 me capacitaram para desenvolver uma aplicação web
 end to end.
---------------------------------------------------
+------------------------------------------------------------------

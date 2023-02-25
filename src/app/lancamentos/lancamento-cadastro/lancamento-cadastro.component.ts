@@ -2,12 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {CategoriaService} from "../../categorias/categoria.service";
 import {PessoasService} from "../../pessoas/pessoas.service";
 import {Lancamento} from "../../core/modelos/lancamento";
-import {FormBuilder, FormGroup,  Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {LancamentoService} from "../lancamento.service";
 import {MessageService} from "primeng/api";
 import {ErrorHandlerService} from "../../core/error-handler.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
+import {retry} from "rxjs";
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -51,17 +52,17 @@ export class LancamentoCadastroComponent implements OnInit {
   configurarFormulario():FormGroup{
     return this.formulario = this.formBuilder.group({
       codigo: [],
-      tipo: ['RECEITA', Validators.required],
-      dataVencimento: [null, Validators.required],
+      tipo: ['RECEITA'],
+      dataVencimento: [null, this.validarObrigatorio],
       dataPagamento: [],
-      descricao: [null, [Validators.required, Validators.minLength(5)]],
+      descricao: [null, [this.validarObrigatorio, Validators.minLength(5)]],
       valor: [null, Validators.required],
       pessoa: this.formBuilder.group({
         codigo: [null, Validators.required],
         nome: []
       }),
       categorias: this.formBuilder.group({
-        codigo: [null, Validators.required],
+        codigo: [null,Validators.required],
         nome: []
       }),
       observacao: []
@@ -136,4 +137,10 @@ export class LancamentoCadastroComponent implements OnInit {
   atualizarTituloEdicao(){
     this.title.setTitle(`Edição de Lançamento: ${this.formulario.get('descricao')?.value}`);
   }
+
+  validarObrigatorio(input:FormControl){
+    return (input.value ? null : {obrigatorio:true});
+  }
+
+
 }

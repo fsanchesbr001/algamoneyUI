@@ -9,6 +9,7 @@ import {SegurancaModule} from "./seguranca/seguranca.module";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {LancamentosModule} from "./lancamentos/lancamentos.module";
 import {PessoasModule} from "./pessoas/pessoas.module";
+import {DashboardModule} from "./dashboard/dashboard.module";
 
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -24,6 +25,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     LancamentosModule,
     PessoasModule,
     SegurancaModule,
+    DashboardModule,
     AppRoutingModule,
     CoreModule
   ],
