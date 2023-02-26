@@ -29,6 +29,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 -----------------------------------------------------------------
 14/01/23 - Capitulo 21.5 - Forms Reativos - Lancamentos e Pessoas
 25/02/23 - Capítulo 23.6 - Gráficos Completos
+26/02/23 - Capítulo 23.10 - Relatorio e novos menus
 -----------------------------------------------------------------
 
 ------------------------------------------------------------------
