@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {PaginaNaoEncontradaComponent} from "./core/pagina-nao-encontrada/pagina-nao-encontrada.component";
 import {AcessoNaoAutorizadoComponent} from "./core/acesso-nao-autorizado/acesso-nao-autorizado.component";
-import {RelatoriosRoutingModule} from "./relatorios/relatorios-routing.module";
 
 const routes: Routes = [
   {path:'', redirectTo:'login',pathMatch:"full"},
